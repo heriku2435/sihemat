@@ -12,9 +12,11 @@
         "laravel/tinker": "^3.0",
         "livewire/livewire": "^3.6.4",
         "livewire/volt": "^1.7.0",
+        "masbug/flysystem-google-drive-ext": "*",
         "shuchkin/simplexlsx": "^1.1",
         "shuchkin/simplexlsxgen": "^1.5",
-        "simplesoftwareio/simple-qrcode": "^4.2"
+        "simplesoftwareio/simple-qrcode": "^4.2",
+        "spatie/laravel-backup": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
