@@ -24,6 +24,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Volt::route('rombel/{rombel}/siswa', 'admin.rombel-siswa-manager')->name('rombel.siswa');
     Route::get('rombel/{rombel}/cetak-label', [\App\Http\Controllers\LabelController::class, 'cetakRombel'])->name('rombel.cetak-label');
     Volt::route('pengaturan', 'admin.pengaturan')->name('pengaturan');
+    Volt::route('panduan-backup', 'admin.panduan-backup')->name('panduan-backup');
     Volt::route('wa-gateway', 'admin.wa-gateway-manager')->name('wa-gateway');
     Volt::route('rekapitulasi', 'laporan.rekapitulasi-manager')->name('rekapitulasi');
     Volt::route('transaksi', 'guru.transaksi-manager')->name('transaksi');
