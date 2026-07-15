@@ -95,7 +95,7 @@ new class extends Component {
                         <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M21.35 11.1h-5.26l-3.3 5.72h10.45l-1.89-5.72zm-12.7 5.72H3.4l1.9-5.72h5.25l-1.9 5.72zm11.23-7.5l-3.55-6.17a1.67 1.67 0 0 0-1.44-.82H9.1a1.67 1.67 0 0 0-1.44.82L4.1 8.5v.02L7.66 14.7l3.55-6.17h8.67z"></path></svg>
                         Pengaturan Backup Otomatis Google Drive
                     </h3>
-                    <p class="text-sm text-gray-500 mb-6">Backup database aplikasi akan diunggah secara otomatis setiap jam 02:00 dini hari ke Google Drive Anda. Kosongkan jika belum menggunakan fitur backup. Lihat <a href="/walkthrough.md" target="_blank" class="text-emerald-600 hover:underline">Panduan Instalasi API Google Drive</a>.</p>
+                    <p class="text-sm text-gray-500 mb-6">Backup database aplikasi akan diunggah secara otomatis setiap jam 02:00 dini hari ke Google Drive Anda. Kosongkan jika belum menggunakan fitur backup. Lihat <a href="{{ route('admin.panduan-backup') }}" target="_blank" class="text-emerald-600 hover:underline">Panduan Instalasi API Google Drive</a>.</p>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
