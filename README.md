@@ -10,6 +10,7 @@ SIHEMAT adalah sebuah aplikasi berbasis web (menggunakan framework Laravel dan L
 - **Dashboard & Grafik**: Ringkasan data (Total Saldo, Jumlah Siswa, Total Rombel) serta grafik riwayat mutasi.
 - **Cek Saldo Mandiri**: Orang tua dapat melihat sisa saldo, mengecek 5 transaksi terakhir lewat grafik interaktif, dan mengunduh rekapan mutasi lengkap berformat PDF tanpa harus login (hanya dengan memindai/memasukkan kode QR).
 - **Export & Import Data**: Mendukung Export data mutasi/rekap ke format Excel dan PDF, serta fitur Import data siswa dari Excel (.xlsx).
+- **Backup Database Otomatis**: Fitur backup database secara otomatis ke Google Drive yang jadwal dan retensinya dapat diatur langsung melalui Dashboard Admin.
 
 ## Persyaratan Server Hosting
 
@@ -89,6 +90,12 @@ Jika layanan hosting Anda (misal Shared Hosting biasa) tidak mengizinkan menjala
 
 6. **Selesai**:
    Aplikasi SIHEMAT sekarang dapat diakses melalui browser Anda menggunakan domain yang telah ditentukan!
+
+## Pengaturan Fitur (Admin Dashboard)
+Aplikasi SIHEMAT memiliki halaman **Pengaturan** khusus di dalam Dashboard Admin untuk mempermudah operasional Anda. Anda tidak perlu repot-repot mengedit file `.env` di hosting Anda untuk mengubah pengaturan ini:
+- **Pengaturan Sekolah**: Ubah nama dan alamat sekolah Anda kapan saja.
+- **Provider WhatsApp**: Pilih penyedia layanan Gateway WhatsApp Anda (misal Fonnte), dan cukup tempelkan API Token-nya ke kolom yang disediakan.
+- **Backup Database ke Google Drive**: Atur sendiri Jam Otomatis Backup dan Durasi Penyimpanan (retensi file backup). Terdapat **Panduan Integrasi API Google Drive** lengkap berbahasa Indonesia yang juga bisa Anda akses langsung dari halaman tersebut!
 
 ## Akun Default
 - **Role**: Admin
