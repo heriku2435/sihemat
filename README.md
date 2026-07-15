@@ -60,6 +60,33 @@ Berikut adalah langkah-langkah ringkas mendeploy aplikasi ini ke server (Shared 
    php artisan migrate:fresh --seed
    ```
 
+### Alternatif Jika Hosting Tidak Memiliki Akses SSH/Composer:
+Jika layanan hosting Anda (misal Shared Hosting biasa) tidak mengizinkan menjalankan command `composer` atau fitur terminal SSH, Anda dapat melakukan cara manual berikut:
+
+1. **Jalankan Composer & Generate Key di Komputer Lokal (PC/Laptop) Anda**:
+   Buka terminal di komputer Anda, lalu jalankan:
+   ```bash
+   composer install --optimize-autoloader --no-dev
+   php artisan key:generate
+   ```
+2. **Upload Keseluruhan Project Termasuk Folder Vendor**:
+   Jadikan file project Anda `.zip` (kali ini **pastikan folder `vendor` ikut dimasukkan**).
+3. **Upload dan Ekstrak di cPanel**.
+4. **Buat Symlink Storage Secara Manual**:
+   Buat sebuah file bernama `symlink.php` di dalam `public_html` (folder public) Anda dengan isi:
+   ```php
+   <?php
+   $targetFolder = $_SERVER['DOCUMENT_ROOT'].'/../sihemat/storage/app/public';
+   $linkFolder = $_SERVER['DOCUMENT_ROOT'].'/storage';
+   symlink($targetFolder, $linkFolder);
+   echo 'Symlink process completed';
+   ```
+   Lalu buka di browser: `https://domainanda.com/symlink.php`. Hapus file ini setelah selesai.
+5. **Migrasi Database via Export/Import SQL**:
+   - Di komputer lokal, jalankan `php artisan migrate:fresh --seed`.
+   - Buka PHPMyAdmin lokal (misal localhost/phpmyadmin), pilih database Anda, lalu lakukan **Export** menjadi file `.sql`.
+   - Buka PHPMyAdmin di cPanel hosting Anda, lalu **Import** file `.sql` tadi ke database server.
+
 6. **Selesai**:
    Aplikasi SIHEMAT sekarang dapat diakses melalui browser Anda menggunakan domain yang telah ditentukan!
 
