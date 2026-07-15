@@ -12,6 +12,8 @@ new class extends Component {
     public $gdrive_client_secret = '';
     public $gdrive_refresh_token = '';
     public $gdrive_folder_id = '';
+    public $backup_time = '02:00';
+    public $backup_retention = 7;
 
     public function mount()
     {
@@ -23,6 +25,8 @@ new class extends Component {
         $this->gdrive_client_secret = Pengaturan::where('key', 'gdrive_client_secret')->value('value') ?? '';
         $this->gdrive_refresh_token = Pengaturan::where('key', 'gdrive_refresh_token')->value('value') ?? '';
         $this->gdrive_folder_id = Pengaturan::where('key', 'gdrive_folder_id')->value('value') ?? '';
+        $this->backup_time = Pengaturan::where('key', 'backup_time')->value('value') ?? '02:00';
+        $this->backup_retention = Pengaturan::where('key', 'backup_retention')->value('value') ?? 7;
     }
 
     public function save()
@@ -35,6 +39,8 @@ new class extends Component {
         Pengaturan::updateOrCreate(['key' => 'gdrive_client_secret'], ['value' => $this->gdrive_client_secret]);
         Pengaturan::updateOrCreate(['key' => 'gdrive_refresh_token'], ['value' => $this->gdrive_refresh_token]);
         Pengaturan::updateOrCreate(['key' => 'gdrive_folder_id'], ['value' => $this->gdrive_folder_id]);
+        Pengaturan::updateOrCreate(['key' => 'backup_time'], ['value' => $this->backup_time]);
+        Pengaturan::updateOrCreate(['key' => 'backup_retention'], ['value' => $this->backup_retention]);
 
         session()->flash('message', 'Pengaturan berhasil disimpan.');
     }
@@ -111,6 +117,18 @@ new class extends Component {
                             <label class="block text-sm font-medium text-gray-700 mb-1">Folder ID (Opsional)</label>
                             <input type="text" wire:model="gdrive_folder_id" class="w-full rounded-xl border-gray-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500 font-mono text-sm" placeholder="1aBcD***">
                             <p class="text-xs text-gray-500 mt-1">Biarkan kosong jika ingin menyimpan backup di direktori root Google Drive.</p>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Waktu Backup Otomatis</label>
+                            <input type="time" wire:model="backup_time" class="w-full rounded-xl border-gray-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500">
+                            <p class="text-xs text-gray-500 mt-1">Sistem akan melakukan backup setiap hari pada jam ini.</p>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Durasi Penyimpanan (Hari)</label>
+                            <input type="number" min="1" max="365" wire:model="backup_retention" class="w-full rounded-xl border-gray-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500">
+                            <p class="text-xs text-gray-500 mt-1">Backup yang lebih lama dari durasi ini akan dihapus otomatis.</p>
                         </div>
                     </div>
                 </div>
